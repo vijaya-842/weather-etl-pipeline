@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  scheduler:
+    environment:
+      - WEATHER_DB_PATH=/tmp/weather_warehouse.db
+      - AIRFLOW__CORE__LOAD_EXAMPLES=False
+      - AIRFLOW__LOGGING__LOGGING_LEVEL=INFO
+    volumes:
+      - weather-db:/tmp
+
+  webserver:
+    environment:
+      - AIRFLOW__CORE__LOAD_EXAMPLES=False
+
+volumes:
+  weather-db:
